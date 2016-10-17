@@ -1,0 +1,18 @@
+<messaging:emailTemplate subject="Invoice Details" recipientType="User" relatedToType="ExpenseMemberAssociation__c">
+
+<messaging:attachment renderAs="PDF" filename="Invoice.pdf">
+    <html>
+        <head/>
+        <body>
+            Hi Thank U for the Contribution {!relatedTo.ExpenseID__r.Event__c}   
+            
+            Event Name:   {!relatedTo.ExpenseID__r.Event__c} 
+            Event Date:   {!relatedTo.ExpenseID__r.Date__c} 
+            Contributer Name :  {!relatedTo.MemberID__r.FirstName__c} {!relatedTo.MemberID__r.LastName__c} 
+            Contributed Amount :  {!relatedTo.ContributionAmount__c}   
+        </body>
+    </html>
+</messaging:attachment>
+<messaging:plainTextEmailBody >
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

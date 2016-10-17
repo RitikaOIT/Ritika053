@@ -1,0 +1,52 @@
+<apex:page standardController="Expense__c" renderAs="pdf" applyBodyTag="false" extensions="ExpenseEXT">
+    <head>
+        <style> 
+            body { font-family: 'Arial Unicode MS'; }
+            .bodystyle{  font-family: times, serif; font-size:14pt; font-style:italic; }  
+        </style>
+    </head>
+    <body>
+        <center>
+        <h1>Money Receipt!</h1>
+     
+        <apex:panelGrid columns="2" border="2" width="100%">
+        
+          <apex:outputText value="{!$ObjectType.Expense__c.Fields.Event__c.label}" styleClass="bodystyle"/>
+              <apex:outputField value="{!Expense__c.Event__c}"/>
+              
+           
+            <apex:outputText value="{!$ObjectType.Expense__c.Fields.Description__c.label}" styleClass="bodystyle"/>
+              <apex:outputField value="{!Expense__c.Description__c}"/>
+              
+               <apex:outputText value="{!$ObjectType.Expense__c.Fields.Event__c.label}" styleClass="bodystyle"/>
+              <apex:outputField value="{!Expense__c.Event__c}"/>
+              
+               <apex:outputText value="{!$ObjectType.Expense__c.Fields.Amount__c.label}" styleClass="bodystyle"/>
+            <apex:outputfield value="{!Expense__c.Amount__c}"/>
+         
+            <apex:outputText value="{!$ObjectType.Expense__c.Fields.TotalContributed__c.label}" styleClass="bodystyle"/>
+            <apex:outputText value="{!Expense__c.TotalContributed__c}" />
+           
+               <apex:outputText value="{!$ObjectType.Expense__c.Fields.Date__c.label}" styleClass="bodystyle"/>
+            <apex:outputText value="{!Expense__c.Date__c}" />
+           
+        </apex:panelGrid>
+        </center>
+        
+        
+         <h5>Expenses Detail per Event</h5>
+            <table border="2"  width="600px" Class="center">
+             <tr>
+                 <td> Name </td>
+                 <td> Contributed Amount</td>
+                
+             </tr>   
+            <apex:repeat value="{!memExp}" var="i">
+             <tr>
+                 <td> {!i.MemberID__r.FirstName__c}</td>
+                 <td> {!i.ContributionAmount__c}</td>
+             </tr>    
+            </apex:repeat>  
+            </table> 
+    </body>
+</apex:page>
